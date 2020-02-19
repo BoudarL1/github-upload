@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="TaskTimeTracker.Controls.Popup.PopupUserAcronym"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskTimeTracker.Controls.Popup"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Popup Name="popup" Placement="Center">
+		<StackPanel Background="LightGray" Width="390" Height="80">
+			<Label Margin="10 0 10 0" HorizontalAlignment="Left">Enter your Acronym</Label>
+			<DockPanel>
+				<TextBox Name="tbValue" Margin="10 0 10 0" HorizontalAlignment="Left" Width="280"></TextBox>
+				<Button Margin="0 0 10 0" Click="OnPopupOkCLick">Ok</Button>
+			</DockPanel>
+			<Label Margin="0 5 0 0" FontWeight="Normal" FontSize="11" FontStyle="Italic">This is used to retrieve your task list from devnet. Must be 2-4 characters long.</Label>
+		</StackPanel>
+	</Popup>
+</UserControl>

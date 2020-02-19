@@ -1,0 +1,2141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AuthenticateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthenticateRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MachineGuid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Configuration" type="tns:ConfigurationInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConfigurationInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MachineName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MacAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CpuDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RamSize" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HardDiskSize" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GraphicCardDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceTag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OsName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BiosDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateResult" type="tns:AuthenticationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthenticationResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Acronym" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="tns:AuthenticationResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AuthenticationResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Exception" />
+          <s:enumeration value="UnknwonUser" />
+          <s:enumeration value="UnknownMachine" />
+          <s:enumeration value="Inactive" />
+          <s:enumeration value="Success" />
+          <s:enumeration value="UpdateOnly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Disconnect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:FactConfigurationUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FactConfigurationUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MachineName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SurName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GivenName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Team" type="tns:Team" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MoodysLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Acronym" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:UserStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastPingDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LoginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PingDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdleTime" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WebServerPort" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZoneId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Printers" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Team">
+        <s:restriction base="s:string">
+          <s:enumeration value="NONE" />
+          <s:enumeration value="BI" />
+          <s:enumeration value="BVD" />
+          <s:enumeration value="CL" />
+          <s:enumeration value="CM" />
+          <s:enumeration value="FM" />
+          <s:enumeration value="MK" />
+          <s:enumeration value="PM" />
+          <s:enumeration value="QC" />
+          <s:enumeration value="SE" />
+          <s:enumeration value="SP" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="UserStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSet" />
+          <s:enumeration value="Connected" />
+          <s:enumeration value="Disconnected" />
+          <s:enumeration value="Away" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DisconnectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Ping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:FactConfigurationUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PingResult" type="tns:ArrayOfFactConfigurationUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFactConfigurationUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FactConfigurationUser" nillable="true" type="tns:FactConfigurationUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWebServerPort">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWebServerPortResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWebServerPortResult" type="tns:GetWebServerPortResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetWebServerPortResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PortNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:WebServerStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="WebServerStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Disabled" />
+          <s:enumeration value="ApplicationNotRunning" />
+          <s:enumeration value="Ok" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetUserConfiguration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:FactConfigurationUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserConfigurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserConfigurationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUserConfiguration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:FactConfigurationUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUserConfigurationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetConfiguration">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetConfigurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConfigurationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTranslations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fullClassName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTranslationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTranslationsResult" type="tns:ArrayOfArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTaskList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="acronym" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfTaskStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTaskStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaskStatus" type="tns:TaskStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="TaskStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="New" />
+          <s:enumeration value="Assigned" />
+          <s:enumeration value="InReview" />
+          <s:enumeration value="Feedback" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="Suspended" />
+          <s:enumeration value="Resolved" />
+          <s:enumeration value="Closed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetTaskListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskListResult" type="tns:ArrayOfTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTask">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Task">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ForFeature" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpectedTime" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Additional" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResolutionComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReleaseNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="tns:ArrayOfNote" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachments" type="tns:ArrayOfAttachment" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmitDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Concepts" type="tns:ArrayOfConcept" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignedUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reporter" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:TaskStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="tns:Priority" />
+          <s:element minOccurs="1" maxOccurs="1" name="Severity" type="tns:Severity" />
+          <s:element minOccurs="1" maxOccurs="1" name="QcInf" type="tns:QcInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Category" type="tns:TaskCategory" />
+          <s:element minOccurs="1" maxOccurs="1" name="Module" type="tns:Module" />
+          <s:element minOccurs="1" maxOccurs="1" name="RevisionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Resolution" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResolutionDuration" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Goals" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequiredChanges" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documentation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnvironmentId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Note" nillable="true" type="tns:Note" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Note">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAttachment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attachment" nillable="true" type="tns:Attachment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Attachment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConcept">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Concept" nillable="true" type="tns:Concept" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Concept">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TargetDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FactVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FA_Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FA_Owner" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FA_CompletedRate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FA_Path" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_Mandays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_DevCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CloseDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClosedBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CloseDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnalyseDocId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignedTeam" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WFStatus" type="tns:DeliveryWorkFlowStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_Technical_Analysis" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_Framwork_Dev" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_Internal_Work" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_Bug_Correction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EST_BI_Config" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProgressionPercent" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DeliveryWorkFlowStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="WaitingForFa" />
+          <s:enumeration value="ToBeStarted" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="InTesting" />
+          <s:enumeration value="Closed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Priority">
+        <s:restriction base="s:string">
+          <s:enumeration value="VLD_VL_DEFECT_PRIORITY_URGENT" />
+          <s:enumeration value="VLD_VL_DEFECT_PRIORITY_HIGH" />
+          <s:enumeration value="VLD_VL_DEFECT_PRIORITY_NORMAL" />
+          <s:enumeration value="VLD_VL_DEFECT_PRIORITY_LOW" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Severity">
+        <s:restriction base="s:string">
+          <s:enumeration value="VLD_VL_DEFECT_SEVERITY_CRITICAL" />
+          <s:enumeration value="VLD_VL_DEFECT_SEVERITY_MAJOR" />
+          <s:enumeration value="VLD_VL_DEFECT_SEVERITY_NORMAL" />
+          <s:enumeration value="VLD_VL_DEFECT_SEVERITY_MINOR" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="QcInfo">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotToBeTested" />
+          <s:enumeration value="ToBeTestedOnce" />
+          <s:enumeration value="ToBeTestedRegulary" />
+          <s:enumeration value="Tested" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TaskCategory">
+        <s:restriction base="s:string">
+          <s:enumeration value="Bug" />
+          <s:enumeration value="Development" />
+          <s:enumeration value="TestCase" />
+          <s:enumeration value="Testing" />
+          <s:enumeration value="QC_Management" />
+          <s:enumeration value="Analysis" />
+          <s:enumeration value="Documentation" />
+          <s:enumeration value="Support" />
+          <s:enumeration value="FunctionalAnalysis" />
+          <s:enumeration value="System" />
+          <s:enumeration value="Delivery" />
+          <s:enumeration value="Customisation" />
+          <s:enumeration value="Maintenance" />
+          <s:enumeration value="Other" />
+          <s:enumeration value="Bug_Customization" />
+          <s:enumeration value="Development_Customization" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Module">
+        <s:restriction base="s:string">
+          <s:enumeration value="Archives" />
+          <s:enumeration value="Browser" />
+          <s:enumeration value="Caching" />
+          <s:enumeration value="CodeManagement" />
+          <s:enumeration value="DataDictionary" />
+          <s:enumeration value="Datasets" />
+          <s:enumeration value="DataSourceAndExternalProviders" />
+          <s:enumeration value="ElementManagement" />
+          <s:enumeration value="ExchangeRates" />
+          <s:enumeration value="Exporter" />
+          <s:enumeration value="FileImporter" />
+          <s:enumeration value="Fileserver" />
+          <s:enumeration value="Global" />
+          <s:enumeration value="Help" />
+          <s:enumeration value="LayoutManagement" />
+          <s:enumeration value="Licence" />
+          <s:enumeration value="List" />
+          <s:enumeration value="Logging" />
+          <s:enumeration value="Maintenance" />
+          <s:enumeration value="MenuAndLinks" />
+          <s:enumeration value="Parameters" />
+          <s:enumeration value="PeerGroups" />
+          <s:enumeration value="Relations" />
+          <s:enumeration value="ReportAndSectionDesigner" />
+          <s:enumeration value="Reports" />
+          <s:enumeration value="Scorecards" />
+          <s:enumeration value="Search" />
+          <s:enumeration value="SecurityAuthentication" />
+          <s:enumeration value="SecurityAuthorization" />
+          <s:enumeration value="Settings" />
+          <s:enumeration value="TaskList" />
+          <s:enumeration value="Translations" />
+          <s:enumeration value="UsersAndProfiles" />
+          <s:enumeration value="ValueLists" />
+          <s:enumeration value="Workflow" />
+          <s:enumeration value="Scripts" />
+          <s:enumeration value="WebService" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetWeeklyPlanning">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="acronym" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeeklyPlanningResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeeklyPlanningResult" type="tns:WeeklyPlanning" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WeeklyPlanning">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Tasks" type="tns:ArrayOfTask" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tickets" type="tns:ArrayOfTicket" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documents" type="tns:ArrayOfFunctionalAnalysis" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTicket">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ticket" nillable="true" type="tns:Ticket" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ticket">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QcInf" type="tns:QcInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Category" type="tns:TaskCategory" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="tns:Priority" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachments" type="tns:ArrayOfAttachment" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reporter" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaskId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reviews" type="tns:ArrayOfTicketReview" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmittedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Severity" type="tns:Severity" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:TicketStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReleasePmId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reviewer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Team" type="tns:AllTeam" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="tns:ArrayOfNote" />
+          <s:element minOccurs="1" maxOccurs="1" name="TestRun" type="tns:TestRunCategory" />
+          <s:element minOccurs="1" maxOccurs="1" name="WarmupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="tns:TicketLevel" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:TicketType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Product" type="tns:Product" />
+          <s:element minOccurs="1" maxOccurs="1" name="Provider" type="tns:Provider" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestType" type="tns:RequestType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Reproductible" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Escalated" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Module" type="tns:Module" />
+          <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientTicketId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PmRelease" type="tns:PmRelease" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnvironmentId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignedTask" type="tns:Task" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParsingScore" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTicketReview">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TicketReview" nillable="true" type="tns:TicketReview" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TicketReview">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reviewer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TicketId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReviewDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReviewStatus" type="tns:ReviewStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReviewStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Reopened" />
+          <s:enumeration value="Unclear" />
+          <s:enumeration value="Accepted" />
+          <s:enumeration value="Reassigned" />
+          <s:enumeration value="Suspended" />
+          <s:enumeration value="NothingToDo" />
+          <s:enumeration value="Implemented" />
+          <s:enumeration value="Abandoned" />
+          <s:enumeration value="Closed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TicketStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Open" />
+          <s:enumeration value="InReview" />
+          <s:enumeration value="Planned" />
+          <s:enumeration value="Resolved" />
+          <s:enumeration value="Closed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AllTeam">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="BI" />
+          <s:enumeration value="CM" />
+          <s:enumeration value="FM" />
+          <s:enumeration value="PM" />
+          <s:enumeration value="QC" />
+          <s:enumeration value="SE" />
+          <s:enumeration value="SP" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TestRunCategory">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Prevalidation" />
+          <s:enumeration value="DetailTest" />
+          <s:enumeration value="SecondDelivery" />
+          <s:enumeration value="ThirdDelivery" />
+          <s:enumeration value="FourthDelivery" />
+          <s:enumeration value="Others" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TicketLevel">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="SmokeTesting" />
+          <s:enumeration value="SanityTesting" />
+          <s:enumeration value="FunctionalTesting" />
+          <s:enumeration value="RegressionTesting" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TicketType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Prod" />
+          <s:enumeration value="UAT" />
+          <s:enumeration value="Dev" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Product">
+        <s:restriction base="s:string">
+          <s:enumeration value="Fact_V1" />
+          <s:enumeration value="Fact_V2" />
+          <s:enumeration value="Fact_V3_0" />
+          <s:enumeration value="Fact_V3_5" />
+          <s:enumeration value="Fact_V3_8" />
+          <s:enumeration value="Fact_V3_9" />
+          <s:enumeration value="Fact_V4_0" />
+          <s:enumeration value="Fact_V4_1" />
+          <s:enumeration value="Fact_V4_2" />
+          <s:enumeration value="Fact_V4_3" />
+          <s:enumeration value="Fact_V4_4" />
+          <s:enumeration value="Fact_V4_5" />
+          <s:enumeration value="Fact_V4_6" />
+          <s:enumeration value="Fact_V4_7" />
+          <s:enumeration value="Fact_V4_8" />
+          <s:enumeration value="Fact_V4_9" />
+          <s:enumeration value="Fact_V4_10" />
+          <s:enumeration value="Fact_V4_11" />
+          <s:enumeration value="Fact_V4_12" />
+          <s:enumeration value="Fact_V4_13" />
+          <s:enumeration value="Fact_V4_14" />
+          <s:enumeration value="Fact_V4_15" />
+          <s:enumeration value="Fact_V4_16" />
+          <s:enumeration value="Fact_V4_17" />
+          <s:enumeration value="Fact_V5_1" />
+          <s:enumeration value="Fact_V5_2" />
+          <s:enumeration value="Fact_V5_3" />
+          <s:enumeration value="Fact_V5_4" />
+          <s:enumeration value="Fact_V5_5" />
+          <s:enumeration value="Exporter" />
+          <s:enumeration value="Importer" />
+          <s:enumeration value="Data_Feed" />
+          <s:enumeration value="Template" />
+          <s:enumeration value="Web_Service" />
+          <s:enumeration value="Back_Office_Manager" />
+          <s:enumeration value="DevNet" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Provider">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Orbis_Bank_Focus" />
+          <s:enumeration value="Amadeus" />
+          <s:enumeration value="Orbis_Insurance" />
+          <s:enumeration value="Aida" />
+          <s:enumeration value="Fame" />
+          <s:enumeration value="Diane" />
+          <s:enumeration value="Orbis" />
+          <s:enumeration value="EIU" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="RequestType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Red_Screen" />
+          <s:enumeration value="Unhandled_Error" />
+          <s:enumeration value="Content_Issue" />
+          <s:enumeration value="Licence_Renewal" />
+          <s:enumeration value="Installation" />
+          <s:enumeration value="Client_Query" />
+          <s:enumeration value="Production_Server_Issue" />
+          <s:enumeration value="Modification" />
+          <s:enumeration value="Unexepected_Behaviour" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PmRelease">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reporter" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DueDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClosedBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachments" type="tns:ArrayOfAttachment" />
+          <s:element minOccurs="1" maxOccurs="1" name="PhaseId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PercentProgression" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="FactDevRelease_Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FactVersion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsInternal" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFunctionalAnalysis">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FunctionalAnalysis" nillable="true" type="tns:FunctionalAnalysis" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FunctionalAnalysis">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Abstract" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:DocumentWorkFlowStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedProductionDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionalApproval" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TechnicalApproval" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientApproval" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Concept" type="tns:Concept" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DocumentWorkFlowStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Active_Documents" />
+          <s:enumeration value="All_Documents" />
+          <s:enumeration value="Created" />
+          <s:enumeration value="InWriting" />
+          <s:enumeration value="Proposed" />
+          <s:enumeration value="InFeedBack" />
+          <s:enumeration value="InApproval" />
+          <s:enumeration value="InSuspended" />
+          <s:enumeration value="Approved" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetAttachment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttachmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttachmentResult" type="tns:DocumentAttachment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocumentAttachment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="taskId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ticketId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketResult" type="tns:Ticket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskOrTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskOrTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskOrTicketResult" type="tns:TaskOrTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TaskOrTicket">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Task" type="tns:Task" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="tns:Ticket" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUnassignedSevereTickets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="team" type="tns:AllTeam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnassignedSevereTicketsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnassignedSevereTicketsResult" type="tns:ArrayOfTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentResult" type="tns:FunctionalAnalysis" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMessageHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:MessageHistoryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MessageHistoryRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="tns:MessageType" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Users" type="tns:ArrayOfFactConfigurationUser" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserInfo" type="tns:FactConfigurationUser" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MessageType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Text" />
+          <s:enumeration value="File" />
+          <s:enumeration value="RichText" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddMessageHistoryResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMessageHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:MessageHistoryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageHistoryResult" type="tns:MessageHistoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MessageHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Messages" type="tns:ArrayOfMessageHistory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMessageHistory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MessageHistory" nillable="true" type="tns:MessageHistory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MessageHistory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="tns:MessageType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserAcro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Users" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMessageHistoryV2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:MessageHistoryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageHistoryV2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageHistoryV2Result" type="tns:MessageHistoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:XmlConfigArgType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="XmlConfigArgType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Environment" />
+          <s:enumeration value="Ticket" />
+          <s:enumeration value="Task" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetXmlConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlConfigResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientIdList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientIdListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientIdListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSqlServerList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSqlServerListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSqlServerListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatabaseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serverName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatabaseListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatabaseListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatabaseListAdvanced">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serverName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatabaseListAdvancedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatabaseListAdvancedResult" type="tns:ArrayOfDatabaseInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDatabaseInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DatabaseInfo" nillable="true" type="tns:DatabaseInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatabaseInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTicketInformation">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTicketInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketInformationResult" type="tns:TicketInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TicketInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfProject" />
+          <s:element minOccurs="0" maxOccurs="1" name="TicketTypes" type="tns:ArrayOfTicketType" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaskCategories" type="tns:ArrayOfTaskCategory" />
+          <s:element minOccurs="0" maxOccurs="1" name="Priorities" type="tns:ArrayOfPriority" />
+          <s:element minOccurs="0" maxOccurs="1" name="Severities" type="tns:ArrayOfSeverity" />
+          <s:element minOccurs="0" maxOccurs="1" name="AllTeams" type="tns:ArrayOfAllTeam" />
+          <s:element minOccurs="0" maxOccurs="1" name="Users" type="tns:ArrayOfUser" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriorityTranslations" type="tns:ArrayOfArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeverityTranslations" type="tns:ArrayOfArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Acronym" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachments" type="tns:ArrayOfAttachment" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Responsible" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdentProject" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendMail" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Saml" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeactiavteBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupportAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssueMailConfig" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTicketType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TicketType" type="tns:TicketType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaskCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaskCategory" type="tns:TaskCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPriority">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Priority" type="tns:Priority" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSeverity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Severity" type="tns:Severity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAllTeam">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AllTeam" type="tns:AllTeam" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Acronym" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamAcro" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DummyDevEnvironment">
+        <s:complexType />
+      </s:element>
+      <s:element name="DummyDevEnvironmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DummyDevEnvironmentResult" type="tns:DevEnvironment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DevEnvironment">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseEnvironment" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseEnvironment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rule" type="tns:ServerRule" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectAcro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FactVersion" type="tns:FactVersion" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpirationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Theme" type="tns:FactTheme" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultUserPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalProductUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalProductPassword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:EnvironmentStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeFolder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataBase" type="tns:DataBaseEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="Site" type="tns:SiteEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServerRule">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSet" />
+          <s:enumeration value="Dev" />
+          <s:enumeration value="UAT" />
+          <s:enumeration value="Prod" />
+          <s:enumeration value="Prod_UAT" />
+          <s:enumeration value="Test" />
+          <s:enumeration value="Batch" />
+          <s:enumeration value="Other" />
+          <s:enumeration value="Support" />
+          <s:enumeration value="POC" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="FactVersion" />
+      <s:simpleType name="FactTheme">
+        <s:restriction base="s:string">
+          <s:enumeration value="Na" />
+          <s:enumeration value="V2" />
+          <s:enumeration value="F5" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="EnvironmentStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="ToBeCreated" />
+          <s:enumeration value="Online" />
+          <s:enumeration value="Offline" />
+          <s:enumeration value="ToBeDeleted" />
+          <s:enumeration value="Deleted" />
+          <s:enumeration value="Aborted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DataBaseEntry">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseProductionEntry">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LastBackUpDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseProductionEntry" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Server" type="tns:ServerEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServerEntry">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:ServerType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rule" type="tns:ServerRule" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsVirtual" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpirationDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cpu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ram" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hdd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceTag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PurchaseDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BiosVersionDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MacAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModificationDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="GraphicCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BackupDir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkingDir" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServerType">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSet" />
+          <s:enumeration value="DataBase" />
+          <s:enumeration value="IIS" />
+          <s:enumeration value="Perso" />
+          <s:enumeration value="Batch" />
+          <s:enumeration value="Data" />
+          <s:enumeration value="Other" />
+          <s:enumeration value="HardWare" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SiteEntry">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseProductionEntry">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VirtualUrl" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SiteEnvironment">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseEnvironment" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DummySiteEnvironment">
+        <s:complexType />
+      </s:element>
+      <s:element name="DummySiteEnvironmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DummySiteEnvironmentResult" type="tns:SiteEnvironment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdditionalTicketInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectAccro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdditionalTicketInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdditionalTicketInformationResult" type="tns:AdditionalTicketInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AdditionalTicketInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Releases" type="tns:ArrayOfPmRelease" />
+          <s:element minOccurs="0" maxOccurs="1" name="Environments" type="tns:ArrayOfBaseEnvironment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPmRelease">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PmRelease" nillable="true" type="tns:PmRelease" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBaseEnvironment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BaseEnvironment" nillable="true" type="tns:BaseEnvironment" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="releasePmid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:TicketType" />
+            <s:element minOccurs="1" maxOccurs="1" name="category" type="tns:TaskCategory" />
+            <s:element minOccurs="1" maxOccurs="1" name="severity" type="tns:Severity" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="externalId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reporter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="team" type="tns:AllTeam" />
+            <s:element minOccurs="0" maxOccurs="1" name="reviewer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="environmentId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveTicketResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAttachment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="acronym" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ticketId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAttachmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddAttachmentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DisconnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="DisconnectSoapOut">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWebServerPortSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWebServerPort" />
+  </wsdl:message>
+  <wsdl:message name="GetWebServerPortSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWebServerPortResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="GetUserConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetUserConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetUserConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="SetUserConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetUserConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTranslationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTranslations" />
+  </wsdl:message>
+  <wsdl:message name="GetTranslationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTranslationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaskList" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWeeklyPlanningSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWeeklyPlanning" />
+  </wsdl:message>
+  <wsdl:message name="GetWeeklyPlanningSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWeeklyPlanningResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttachment" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTask" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTicket" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskOrTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaskOrTicket" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskOrTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskOrTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnassignedSevereTicketsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnassignedSevereTickets" />
+  </wsdl:message>
+  <wsdl:message name="GetUnassignedSevereTicketsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnassignedSevereTicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMessageHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddMessageHistory" />
+  </wsdl:message>
+  <wsdl:message name="AddMessageHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddMessageHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageHistoryV2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageHistoryV2" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageHistoryV2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageHistoryV2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlConfig" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientIdListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientIdList" />
+  </wsdl:message>
+  <wsdl:message name="GetClientIdListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientIdListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSqlServerListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSqlServerList" />
+  </wsdl:message>
+  <wsdl:message name="GetSqlServerListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSqlServerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatabaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatabaseList" />
+  </wsdl:message>
+  <wsdl:message name="GetDatabaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatabaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatabaseListAdvancedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatabaseListAdvanced" />
+  </wsdl:message>
+  <wsdl:message name="GetDatabaseListAdvancedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatabaseListAdvancedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTicketInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DummyDevEnvironmentSoapIn">
+    <wsdl:part name="parameters" element="tns:DummyDevEnvironment" />
+  </wsdl:message>
+  <wsdl:message name="DummyDevEnvironmentSoapOut">
+    <wsdl:part name="parameters" element="tns:DummyDevEnvironmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DummySiteEnvironmentSoapIn">
+    <wsdl:part name="parameters" element="tns:DummySiteEnvironment" />
+  </wsdl:message>
+  <wsdl:message name="DummySiteEnvironmentSoapOut">
+    <wsdl:part name="parameters" element="tns:DummySiteEnvironmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAdditionalTicketInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAdditionalTicketInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetAdditionalTicketInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAdditionalTicketInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveTicket" />
+  </wsdl:message>
+  <wsdl:message name="SaveTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddAttachmentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAttachment" />
+  </wsdl:message>
+  <wsdl:message name="AddAttachmentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ClientToolsSoap">
+    <wsdl:operation name="Authenticate">
+      <wsdl:input message="tns:AuthenticateSoapIn" />
+      <wsdl:output message="tns:AuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input message="tns:DisconnectSoapIn" />
+      <wsdl:output message="tns:DisconnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWebServerPort">
+      <wsdl:input message="tns:GetWebServerPortSoapIn" />
+      <wsdl:output message="tns:GetWebServerPortSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserConfiguration">
+      <wsdl:input message="tns:GetUserConfigurationSoapIn" />
+      <wsdl:output message="tns:GetUserConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserConfiguration">
+      <wsdl:input message="tns:SetUserConfigurationSoapIn" />
+      <wsdl:output message="tns:SetUserConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <wsdl:input message="tns:GetConfigurationSoapIn" />
+      <wsdl:output message="tns:GetConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTranslations">
+      <wsdl:input message="tns:GetTranslationsSoapIn" />
+      <wsdl:output message="tns:GetTranslationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskList">
+      <wsdl:input message="tns:GetTaskListSoapIn" />
+      <wsdl:output message="tns:GetTaskListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWeeklyPlanning">
+      <wsdl:input message="tns:GetWeeklyPlanningSoapIn" />
+      <wsdl:output message="tns:GetWeeklyPlanningSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachment">
+      <wsdl:input message="tns:GetAttachmentSoapIn" />
+      <wsdl:output message="tns:GetAttachmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input message="tns:GetTaskSoapIn" />
+      <wsdl:output message="tns:GetTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <wsdl:input message="tns:GetTicketSoapIn" />
+      <wsdl:output message="tns:GetTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskOrTicket">
+      <wsdl:input message="tns:GetTaskOrTicketSoapIn" />
+      <wsdl:output message="tns:GetTaskOrTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnassignedSevereTickets">
+      <wsdl:input message="tns:GetUnassignedSevereTicketsSoapIn" />
+      <wsdl:output message="tns:GetUnassignedSevereTicketsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input message="tns:GetDocumentSoapIn" />
+      <wsdl:output message="tns:GetDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMessageHistory">
+      <wsdl:input message="tns:AddMessageHistorySoapIn" />
+      <wsdl:output message="tns:AddMessageHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageHistory">
+      <wsdl:input message="tns:GetMessageHistorySoapIn" />
+      <wsdl:output message="tns:GetMessageHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageHistoryV2">
+      <wsdl:input message="tns:GetMessageHistoryV2SoapIn" />
+      <wsdl:output message="tns:GetMessageHistoryV2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlConfig">
+      <wsdl:input message="tns:GetXmlConfigSoapIn" />
+      <wsdl:output message="tns:GetXmlConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientIdList">
+      <wsdl:input message="tns:GetClientIdListSoapIn" />
+      <wsdl:output message="tns:GetClientIdListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlServerList">
+      <wsdl:input message="tns:GetSqlServerListSoapIn" />
+      <wsdl:output message="tns:GetSqlServerListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatabaseList">
+      <wsdl:input message="tns:GetDatabaseListSoapIn" />
+      <wsdl:output message="tns:GetDatabaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatabaseListAdvanced">
+      <wsdl:input message="tns:GetDatabaseListAdvancedSoapIn" />
+      <wsdl:output message="tns:GetDatabaseListAdvancedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketInformation">
+      <wsdl:input message="tns:GetTicketInformationSoapIn" />
+      <wsdl:output message="tns:GetTicketInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DummyDevEnvironment">
+      <wsdl:input message="tns:DummyDevEnvironmentSoapIn" />
+      <wsdl:output message="tns:DummyDevEnvironmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DummySiteEnvironment">
+      <wsdl:input message="tns:DummySiteEnvironmentSoapIn" />
+      <wsdl:output message="tns:DummySiteEnvironmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdditionalTicketInformation">
+      <wsdl:input message="tns:GetAdditionalTicketInformationSoapIn" />
+      <wsdl:output message="tns:GetAdditionalTicketInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTicket">
+      <wsdl:input message="tns:SaveTicketSoapIn" />
+      <wsdl:output message="tns:SaveTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <wsdl:input message="tns:AddAttachmentSoapIn" />
+      <wsdl:output message="tns:AddAttachmentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientToolsSoap" type="tns:ClientToolsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://tempuri.org/Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap:operation soapAction="http://tempuri.org/Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWebServerPort">
+      <soap:operation soapAction="http://tempuri.org/GetWebServerPort" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserConfiguration">
+      <soap:operation soapAction="http://tempuri.org/GetUserConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserConfiguration">
+      <soap:operation soapAction="http://tempuri.org/SetUserConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap:operation soapAction="http://tempuri.org/GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTranslations">
+      <soap:operation soapAction="http://tempuri.org/GetTranslations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskList">
+      <soap:operation soapAction="http://tempuri.org/GetTaskList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeeklyPlanning">
+      <soap:operation soapAction="http://tempuri.org/GetWeeklyPlanning" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachment">
+      <soap:operation soapAction="http://tempuri.org/GetAttachment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction="http://tempuri.org/GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <soap:operation soapAction="http://tempuri.org/GetTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskOrTicket">
+      <soap:operation soapAction="http://tempuri.org/GetTaskOrTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnassignedSevereTickets">
+      <soap:operation soapAction="http://tempuri.org/GetUnassignedSevereTickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap:operation soapAction="http://tempuri.org/GetDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMessageHistory">
+      <soap:operation soapAction="http://tempuri.org/AddMessageHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageHistory">
+      <soap:operation soapAction="http://tempuri.org/GetMessageHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageHistoryV2">
+      <soap:operation soapAction="http://tempuri.org/GetMessageHistoryV2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlConfig">
+      <soap:operation soapAction="http://tempuri.org/GetXmlConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientIdList">
+      <soap:operation soapAction="http://tempuri.org/GetClientIdList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlServerList">
+      <soap:operation soapAction="http://tempuri.org/GetSqlServerList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatabaseList">
+      <soap:operation soapAction="http://tempuri.org/GetDatabaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatabaseListAdvanced">
+      <soap:operation soapAction="http://tempuri.org/GetDatabaseListAdvanced" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketInformation">
+      <soap:operation soapAction="http://tempuri.org/GetTicketInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DummyDevEnvironment">
+      <soap:operation soapAction="http://tempuri.org/DummyDevEnvironment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DummySiteEnvironment">
+      <soap:operation soapAction="http://tempuri.org/DummySiteEnvironment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdditionalTicketInformation">
+      <soap:operation soapAction="http://tempuri.org/GetAdditionalTicketInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTicket">
+      <soap:operation soapAction="http://tempuri.org/SaveTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <soap:operation soapAction="http://tempuri.org/AddAttachment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientToolsSoap12" type="tns:ClientToolsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authenticate">
+      <soap12:operation soapAction="http://tempuri.org/Authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWebServerPort">
+      <soap12:operation soapAction="http://tempuri.org/GetWebServerPort" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserConfiguration">
+      <soap12:operation soapAction="http://tempuri.org/GetUserConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserConfiguration">
+      <soap12:operation soapAction="http://tempuri.org/SetUserConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap12:operation soapAction="http://tempuri.org/GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTranslations">
+      <soap12:operation soapAction="http://tempuri.org/GetTranslations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskList">
+      <soap12:operation soapAction="http://tempuri.org/GetTaskList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeeklyPlanning">
+      <soap12:operation soapAction="http://tempuri.org/GetWeeklyPlanning" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachment">
+      <soap12:operation soapAction="http://tempuri.org/GetAttachment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap12:operation soapAction="http://tempuri.org/GetTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <soap12:operation soapAction="http://tempuri.org/GetTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskOrTicket">
+      <soap12:operation soapAction="http://tempuri.org/GetTaskOrTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnassignedSevereTickets">
+      <soap12:operation soapAction="http://tempuri.org/GetUnassignedSevereTickets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap12:operation soapAction="http://tempuri.org/GetDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMessageHistory">
+      <soap12:operation soapAction="http://tempuri.org/AddMessageHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageHistory">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageHistoryV2">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageHistoryV2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlConfig">
+      <soap12:operation soapAction="http://tempuri.org/GetXmlConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientIdList">
+      <soap12:operation soapAction="http://tempuri.org/GetClientIdList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlServerList">
+      <soap12:operation soapAction="http://tempuri.org/GetSqlServerList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatabaseList">
+      <soap12:operation soapAction="http://tempuri.org/GetDatabaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatabaseListAdvanced">
+      <soap12:operation soapAction="http://tempuri.org/GetDatabaseListAdvanced" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketInformation">
+      <soap12:operation soapAction="http://tempuri.org/GetTicketInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DummyDevEnvironment">
+      <soap12:operation soapAction="http://tempuri.org/DummyDevEnvironment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DummySiteEnvironment">
+      <soap12:operation soapAction="http://tempuri.org/DummySiteEnvironment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdditionalTicketInformation">
+      <soap12:operation soapAction="http://tempuri.org/GetAdditionalTicketInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTicket">
+      <soap12:operation soapAction="http://tempuri.org/SaveTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <soap12:operation soapAction="http://tempuri.org/AddAttachment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientTools">
+    <wsdl:port name="ClientToolsSoap" binding="tns:ClientToolsSoap">
+      <soap:address location="http://custo-internal.be.bvdep.net/DevNet/Services/ClientTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientToolsSoap12" binding="tns:ClientToolsSoap12">
+      <soap12:address location="http://custo-internal.be.bvdep.net/DevNet/Services/ClientTools.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

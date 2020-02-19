@@ -1,0 +1,93 @@
+﻿<Window x:Class="TaskTimeTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="clr-namespace:TaskTimeTracker.Controls"
+		xmlns:basic="clr-namespace:TaskTimeTracker.Controls.Basic"
+		xmlns:popup="clr-namespace:TaskTimeTracker.Controls.Popup"
+		xmlns:custom="clr-namespace:TaskTimeTracker"
+		xmlns:screens="clr-namespace:TaskTimeTracker.Controls.Screens"
+		mc:Ignorable="d"
+        Height="500" Width="1000"
+		Background="#D0D0D0"
+		FontSize="14"
+		FontWeight="SemiBold"
+		VerticalAlignment="Center" HorizontalAlignment="Center"
+		Closed="On_Close">
+	<ScrollViewer>
+        <TabControl SelectionChanged="OnTabControl_SelectionChanged">
+            <TabItem>
+				<TabItem.Header>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Controls/Images/list.png" VerticalAlignment="Center"/>
+						<TextBlock Text="Current" VerticalAlignment="Center"/>
+					</StackPanel>
+				</TabItem.Header>
+				
+				<Grid Name="MainGrid" Background="Gray">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="auto"></RowDefinition>
+						<RowDefinition Height="auto"></RowDefinition>
+					</Grid.RowDefinitions>
+					<Grid Name="TasksGrid" Grid.Row="0" Grid.Column="0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="50"></RowDefinition>
+						</Grid.RowDefinitions>
+						<!--header-->
+						<Grid Height="450">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="80"></ColumnDefinition>
+								<ColumnDefinition Width="100*"></ColumnDefinition>
+								<ColumnDefinition Width="50"/>
+								<ColumnDefinition Width="100"></ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="50"></RowDefinition>
+								<RowDefinition Height="50"></RowDefinition>
+							</Grid.RowDefinitions>
+							<!--Header-->
+							<Rectangle Grid.Column="0" Fill="DarkSeaGreen" RadiusX="10" RadiusY="10" Margin="5 2 5 2"></Rectangle>
+							<Label Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold">ID</Label>
+							<Rectangle Grid.Column="1" Fill="DarkSeaGreen" RadiusX="10" RadiusY="10" Margin="5 2 5 2" Name="rctHeaderTask"></Rectangle>
+							<Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Name="lblHeaderTask">TASKS</Label>
+							<Rectangle Grid.Column="3" Fill="DarkSeaGreen" RadiusX="10" RadiusY="10" Margin="5 2 5 2"></Rectangle>
+							<Label Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Time</Label>
+						</Grid>
+					</Grid>
+					<StackPanel Grid.Row="1" Grid.Column="0">
+						<Label FontFamily="Tahoma" FontWeight="Bold" FontSize="18">Free Timers</Label>
+						<StackPanel Name="FreeTimers"></StackPanel>
+						<popup:PopupUserControl x:Name="freeTimerPopup"></popup:PopupUserControl>
+						<popup:PopupUserAcronym x:Name="userAcronymPopup"></popup:PopupUserAcronym>
+						<basic:PlusUserControl x:Name="freeTimerPlus" Margin="28 0 0 0"></basic:PlusUserControl>
+					</StackPanel>
+				</Grid>
+			</TabItem>
+            <!--<TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Controls/Images/history.png" VerticalAlignment="Center" />
+                        <TextBlock Text="History" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <controls:TaskHistoryControl></controls:TaskHistoryControl>
+            </TabItem>-->
+			<TabItem Name="tabItemSettings">
+				<TabItem.Header>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Controls/Images/history.png" VerticalAlignment="Center" />
+						<TextBlock Text="Settings" VerticalAlignment="Center"/>
+					</StackPanel>
+				</TabItem.Header>
+				<screens:SettingsScreen x:Name="settingsScreen"></screens:SettingsScreen>
+			</TabItem>
+        </TabControl>
+    </ScrollViewer>
+</Window>

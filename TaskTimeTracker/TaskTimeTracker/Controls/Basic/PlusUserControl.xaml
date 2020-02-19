@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="TaskTimeTracker.Controls.Basic.PlusUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+	<Grid Name="gridFreeTimerPlus">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="24"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Rectangle  RadiusX="5" RadiusY="5" Width="20" Height="20" Fill="Gainsboro"></Rectangle>
+		<Image Name="imgFreeTimerPlus" Source="/Controls/Images/add.png" Width="25" HorizontalAlignment="Left"></Image>
+	</Grid>
+</UserControl>

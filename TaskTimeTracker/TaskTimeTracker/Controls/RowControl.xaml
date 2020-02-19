@@ -1,0 +1,60 @@
+<UserControl x:Class="TaskTimeTracker.Controls.RowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskTimeTracker.Controls"
+			 xmlns:basic="clr-namespace:TaskTimeTracker.Controls.Basic"
+			 xmlns:popup="clr-namespace:TaskTimeTracker.Controls.Popup"
+			 mc:Ignorable="d" 
+             d:DesignWidth="800">
+    <Grid Name="rowGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+            <ColumnDefinition Width="50"/>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+		
+		<Rectangle Name="IdRectangle" Grid.Column="0" Grid.Row="1" Fill="DarkGray" RadiusX="10" RadiusY="10" Margin="5 0 5 2" Height="30" VerticalAlignment="Top"></Rectangle>
+		<basic:DeleteRowControl x:Name="deleteControl" Grid.Column="0" Grid.Row="1" Width="20" Visibility="Collapsed"></basic:DeleteRowControl>
+		<Label Grid.Column="0" Grid.Row="1" Name="lblId" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+		<Image Grid.Column="0" Grid.Row="1" Name="imgDelete" VerticalAlignment="Top" HorizontalAlignment="Center"></Image>
+
+		<local:TaskControl VerticalAlignment="top" x:Name="taskControl" Grid.Column="1"  Grid.Row="1" ></local:TaskControl>
+
+		<Button  Background="{x:Null}" Name="playButton" Grid.Column="2" Grid.Row="1" BorderThickness="0" Height="30" VerticalAlignment="Top" Click="OnClick">
+			<Grid>
+				<Rectangle Width="50" Height="30" Name="ButonRect" Fill="DarkGray" RadiusX="10" RadiusY="10" VerticalAlignment="Center"></Rectangle>
+				<Image VerticalAlignment="Top" Name="imagePlay" Source="Images/play.png" Height="30" ></Image>
+				<Image VerticalAlignment="Top" Name="imageStop" Source="Images/stop.png" Height="30" Visibility="Collapsed" ></Image>
+			</Grid>
+			<Button.Style>
+				<Style TargetType="{x:Type Button}">
+					<Setter Property="Background" Value="Green"/>
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type Button}">
+								<Border Background="{TemplateBinding Background}">
+									<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+								</Border>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+					<Style.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="DarkGoldenrod"/>
+						</Trigger>
+					</Style.Triggers>
+				</Style>
+			</Button.Style>
+		</Button>
+		<Rectangle Name="TimeRectangle" Grid.Column="3" Grid.Row="1" Fill="DarkGray" RadiusX="10" RadiusY="10" Margin="5 0 5 0" Height="30" VerticalAlignment="Top"></Rectangle>
+		<Label Name="lblTime" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3">00:00:00</Label>
+
+		<popup:PopupDeleteTimer x:Name="popupDelete"></popup:PopupDeleteTimer>
+	</Grid>
+</UserControl>

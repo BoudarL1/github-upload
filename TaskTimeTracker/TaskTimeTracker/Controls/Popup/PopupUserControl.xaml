@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="TaskTimeTracker.Controls.Popup.PopupUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskTimeTracker.Controls.Popup"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Popup Name="popup" Placement="Center" StaysOpen="False">
+		<Popup.InputBindings>
+			<KeyBinding Key="Esc" Command="{Binding CmdEscape}"></KeyBinding>
+		</Popup.InputBindings>
+		<StackPanel Background="LightGray" Width="350" Height="90">
+			<Label Margin="10 0 10 0" HorizontalAlignment="Left">Enter name of timer:</Label>
+			<DockPanel>
+				<TextBox Name="tbTaskName" Margin="10 0 10 0" HorizontalAlignment="Left" Width="280"></TextBox>
+				<Button Margin="0 0 10 0" Click="OnPopupOkCLick">Ok</Button>
+			</DockPanel>
+			<TextBlock Margin="5 5 5 0" FontWeight="Normal" FontSize="11" FontStyle="Italic" TextWrapping="WrapWithOverflow">Free timers are not linked to a specific Task and can be used when
+					your Task haven't been created yet.</TextBlock>
+		</StackPanel>
+	</Popup>
+</UserControl>

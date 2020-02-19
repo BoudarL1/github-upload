@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="TaskTimeTracker.Controls.Basic.DeleteRowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskTimeTracker.Controls.Basic"
+             mc:Ignorable="d" >
+	<Grid Name="mainGrid">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Rectangle  RadiusX="5" RadiusY="5" Width="20" Height="20" Fill="LightSalmon"></Rectangle>
+		<Image Name="imgFreeTimerPlus" Source="/Controls/Images/add.png" Width="25" HorizontalAlignment="Left">
+			<Image.RenderTransform>
+				<RotateTransform Angle="45" CenterX="12" CenterY="12"></RotateTransform>
+			</Image.RenderTransform>
+		</Image>
+	</Grid>
+</UserControl>

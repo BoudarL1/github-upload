@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TaskTimeTracker.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TaskTimeTracker_ClientTools_ClientTools" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://custo-internal.be.bvdep.net/DevNet/Services/ClientTools.asmx</Value>
+    </Setting>
+    <Setting Name="UserAcronym" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">lbo</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

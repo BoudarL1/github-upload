@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace TaskTimeTracker
+{
+	/// <summary>
+	/// Interaction logic for App.xaml
+	/// </summary>
+	public partial class App : Application
+	{
+		private static Mutex Mutex;
+
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			bool created;
+			Mutex = new Mutex(true, "TTT", out created);
+
+			if (!created)
+			{
+				Application.Current.Shutdown();
+			}
+			base.OnStartup(e);
+		}
+	}
+}
